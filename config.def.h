@@ -18,13 +18,13 @@ static const char col_gray1[]       = "#272822";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#cccccc";
 static const char col_gray4[]       = "#eeeeee";
-static const char col_green[]       = "#afd787";
+static const char col_blue[]       = "#ebefff";
 static const char col_red[]         = "#d78787";
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray1 },
-	[SchemeSel]  = { col_gray1, col_green,  col_green },
+	[SchemeSel]  = { col_gray1, col_blue,  col_blue},
 };
 
 /* tagging */
@@ -66,7 +66,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray4, "-sb", col_green, "-sf", col_gray1, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray4, "-sb", col_blue, "-sf", col_gray1, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "140x34", NULL };
@@ -114,6 +114,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+  { 0,                            XK_Print,  spawn,          SHCMD("~/.bin/screenshot.sh") },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
